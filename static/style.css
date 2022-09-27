@@ -1,0 +1,182 @@
+/* base */
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+/* component */
+
+input,
+textarea,
+select {
+  border-radius: 5px;
+  border: 1px solid #dbdcde;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="email"] {
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+input[type="submit"],
+input[type="radio"],
+select {
+  cursor: pointer;
+}
+
+input:hover {
+  transition: 0.2s;
+  opacity: 0.8;
+}
+
+select {
+  padding: 0.5rem 1rem;
+}
+
+textarea {
+  padding: 1rem;
+}
+
+/* util */
+
+.width-50 {
+  width: 50%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+/* header */
+
+header {
+  padding: 50px 0;
+}
+
+.header-heading {
+  text-align: center;
+}
+
+/* layout */
+
+.container {
+  background-color: #f5f5f7;
+  padding: 50px 0;
+}
+
+.inner {
+  margin: 0 auto;
+  width: 960px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+/* form */
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #dbdcde;
+  margin: 0;
+  padding: 30px 0;
+}
+
+.form-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-list:last-child {
+  margin-bottom: 0;
+}
+
+.form-list .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.form-list .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.form-list .value {
+  width: calc(100% - 30px);
+}
+
+/* birth */
+
+.birth {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 30px);
+}
+
+.birth-list:first-child {
+  width: 48%;
+}
+
+.birth-list {
+  width: 23%;
+}
+
+.birth-list select {
+  width: 100%;
+}
+
+/* gender */
+
+.gender {
+  display: flex;
+}
+
+.gender-list {
+  width: 10%;
+}
+
+/* submit */
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.submit-button {
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+/* footer */
+
+footer {
+  padding: 50px 0;
+}
+
+.footer-heading {
+  text-align: center;
+}
