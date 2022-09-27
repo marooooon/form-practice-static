@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "browser-sync start --server src",
-    "gulp": "npx gulp browserSyncTask"
+    "gulp": "npx gulp"
   },
   "repository": {
     "type": "git",
