@@ -1,0 +1,27 @@
+{
+  "name": "form-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --server src",
+    "gulp": "npx gulp browserSyncTask"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marooooon/form-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marooooon/form-practice/issues"
+  },
+  "homepage": "https://github.com/marooooon/form-practice#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.10"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
