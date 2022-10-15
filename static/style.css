@@ -1,3 +1,27 @@
+/* error-message */
+
+.error-message {
+  color: red;
+}
+
+.require-tag {
+  display: flex;
+  align-items: center;
+}
+
+.require-tag::after {
+  content: "必須";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  margin-left: 1em;
+  padding: 2px 3px;
+  border-radius: 5px;
+  font-size: 12px;
+  border: 1px solid red;
+}
+
 /* base */
 
 ul {
@@ -31,7 +55,8 @@ select {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="password"] {
   padding: 0.5rem 1rem;
   width: 100%;
 }
