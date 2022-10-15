@@ -1,20 +1,26 @@
 // 各input要素の外側<li>タグID
-const shimeiList = document.getElementById("shimei_list");
-const furiganaList = document.getElementById("furigana_list");
-const emailList = document.getElementById("email_list");
-const passwordLists = document.getElementById("password_lists");
-const passwordList = document.getElementById("password_list");
-const passworconfirmList = document.getElementById("email_confirm_list");
-const genderManList = document.getElementById("gender_man_list");
-const genderWomanList = document.getElementById("gender_woman_list");
-const genderOtherList = document.getElementById("gender_other_list");
+const shimeiList = document.getElementById("shimei-list");
+const furiganaList = document.getElementById("furigana-list");
+const emailList = document.getElementById("email-list");
+const passwordLists = document.getElementById("password-lists");
+const passwordList = document.getElementById("password-list");
+const passwordConfirmList = document.getElementById("password-confirm-list");
+const genderManList = document.getElementById("gender-man-list");
+const genderWomanList = document.getElementById("gender-woman-list");
+const genderOtherList = document.getElementById("gender-other-list");
 
 // 各input要素ID
 const shimei = document.getElementById("shimei");
 const furigana = document.getElementById("furigana");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const password_confirm = document.getElementById("password_confirm");
+const passwordConfirm = document.getElementById("password-confirm");
+const birthYear = document.getElementById("year");
+const birthMonth = document.getElementById("month");
+const birthDay = document.getElementById("day");
+const genderMan = document.getElementById("gender-man");
+const genderWoman = document.getElementById("gender-woman");
+const genderOther = document.getElementById("gender-other");
 
 // バリデーション
 const validNumeric = /^[^0-9]*$/; // 半角数字のみ（空文字OK）
@@ -27,20 +33,21 @@ const errorMessageNonNumeric = "数字は含めないでください。";
 const errorMessageFurigana = "全角カタカナで入力してください。";
 const errorMessageEmail = "メールアドレスが正しくありません。";
 const errorMessagePassword = "パスワードは同じ値を入力してください。";
+const errorMessageRequired = "入力必須項目です。";
 
 // エラー要素追加
-function createErrorElement(text, error_id, list_id) {
+function createErrorElement(validationText, errorId, listId) {
   const newErrorMessageElement = document.createElement("p");
-  const newErrorMessageContent = document.createTextNode(text);
+  const newErrorMessageContent = document.createTextNode(validationText);
   newErrorMessageElement.appendChild(newErrorMessageContent);
   newErrorMessageElement.classList.add("error-message");
-  newErrorMessageElement.setAttribute("id", error_id);
-  list_id.appendChild(newErrorMessageElement);
+  newErrorMessageElement.setAttribute("id", errorId);
+  listId.appendChild(newErrorMessageElement);
 }
 
 // エラー要素削除
 function removeErrorElement(id) {
-  const errorElement = document.querySelector(id);
+  const errorElement = document.getElementById(id);
   if (errorElement) {
     errorElement.remove();
   }
@@ -48,7 +55,7 @@ function removeErrorElement(id) {
 
 // 氏名バリデーション
 function validationName() {
-  removeErrorElement("#error-shimei");
+  removeErrorElement("error-shimei");
   if (!shimei.value.match(validNumeric)) {
     createErrorElement(errorMessageNonNumeric, "error-shimei", shimeiList);
     return;
@@ -57,7 +64,7 @@ function validationName() {
 
 // フリガナバリデーション
 function validationFurigana() {
-  removeErrorElement("#error-furigana");
+  removeErrorElement("error-furigana");
   if (!furigana.value.match(validFurigana)) {
     createErrorElement(errorMessageFurigana, "error-furigana", furiganaList);
     return;
@@ -66,7 +73,7 @@ function validationFurigana() {
 
 // メールアドレスバリデーション
 function validationEmail() {
-  removeErrorElement("#error-email");
+  removeErrorElement("error-email");
   if (!email.value.match(validEmail)) {
     createErrorElement(errorMessageEmail, "error-email", emailList);
     return;
@@ -75,10 +82,10 @@ function validationEmail() {
 
 // パスワードバリデーション
 function validationPassword() {
-  removeErrorElement("#error-password");
-  if (!password.value || !password_confirm.value) {
+  removeErrorElement("error-password");
+  if (!password.value || !passwordConfirm.value) {
     return;
-  } else if (password.value !== password_confirm.value) {
+  } else if (password.value !== passwordConfirm.value) {
     createErrorElement(errorMessagePassword, "error-password", passwordLists);
     return;
   }
@@ -89,11 +96,53 @@ shimei.addEventListener("change", validationName);
 furigana.addEventListener("change", validationFurigana);
 email.addEventListener("change", validationEmail);
 password.addEventListener("change", validationPassword);
-password_confirm.addEventListener("change", validationPassword);
+passwordConfirm.addEventListener("change", validationPassword);
 
 // 「送信」ボタンの要素を取得
 const submit = document.querySelector(".submit-button");
 submit.addEventListener("click", (e) => {
   // 最初のイベントをキャンセル
   e.preventDefault();
+
+  // バリエーションに引っかかっているか否かチェック
+  let isValidation = false;
+
+  // 必須項目になにか入っていないとエラー
+  if (!shimei.value) {
+    removeErrorElement("error-shimei");
+    createErrorElement(errorMessageRequired, "error-shimei", shimeiList);
+    isValidation = true;
+  }
+
+  if (!furigana.value) {
+    removeErrorElement("error-furigana");
+    createErrorElement(errorMessageRequired, "error-furigana", furiganaList);
+    isValidation = true;
+  }
+
+  if (!email.value) {
+    removeErrorElement("error-email");
+    createErrorElement(errorMessageRequired, "error-email", emailList);
+    isValidation = true;
+  }
+
+  if (!password.value) {
+    removeErrorElement("error-password");
+    createErrorElement(errorMessageRequired, "error-password", passwordList);
+    isValidation = true;
+  }
+
+  if (!passwordConfirm.value) {
+    removeErrorElement("error-password-confirm");
+    createErrorElement(
+      errorMessageRequired,
+      "error-password-confirm",
+      passwordConfirmList
+    );
+    isValidation = true;
+  }
+
+  if (isValidation) {
+    return;
+  }
 });

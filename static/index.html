@@ -19,11 +19,11 @@
             <li class="form-list width-100">
               <h2>お名前</h2>
             </li>
-            <li id="shimei_list" class="form-list width-50">
+            <li id="shimei-list" class="form-list width-50">
               <label class="title require-tag" for="shimei">氏名</label>
               <input id="shimei" class="value" type="text" name="name" />
             </li>
-            <li id="furigana_list" class="form-list width-50">
+            <li id="furigana-list" class="form-list width-50">
               <label class="title require-tag" for="furigana">フリガナ</label>
               <input id="furigana" class="value" type="text" name="name" />
             </li>
@@ -33,7 +33,7 @@
               <h2 class="require-tag">生年月日</h2>
               <ul class="birth">
                 <li class="birth-list">
-                  <select name="year">
+                  <select id="year" name="year">
                     <option value="1990年">1990年</option>
                     <option value="1991年">1991年</option>
                     <option value="1992年">1992年</option>
@@ -48,7 +48,7 @@
                   </select>
                 </li>
                 <li class="birth-list">
-                  <select name="month">
+                  <select id="month" name="month">
                     <option value="1月">1月</option>
                     <option value="2月">2月</option>
                     <option value="3月">3月</option>
@@ -64,7 +64,7 @@
                   </select>
                 </li>
                 <li class="birth-list">
-                  <select name="day">
+                  <select id="day" name="day">
                     <option value="1日">1日</option>
                     <option value="2日">2日</option>
                     <option value="3日">3日</option>
@@ -84,31 +84,31 @@
             <li class="form-list width-100">
               <h2 class="require-tag">性別</h2>
               <ul class="gender">
-                <li id="gender_man_list" class="gender-list">
-                  <input id="gender_man" type="radio" name="gender" />
-                  <label for="gender_man">男</label>
+                <li id="gender-man-list" class="gender-list">
+                  <input id="gender-man" type="radio" name="gender" checked />
+                  <label for="gender-man">男</label>
                 </li>
-                <li id="gender_woman_list" class="gender-list">
-                  <input id="gender_woman" type="radio" name="gender" />
-                  <label for="gender_woman">女</label>
+                <li id="gender-woman-list" class="gender-list">
+                  <input id="gender-woman" type="radio" name="gender" />
+                  <label for="gender-woman">女</label>
                 </li>
-                <li id="gender_other_list" class="gender-list">
-                  <input id="gender_other" type="radio" name="gender" />
-                  <label for="gender_other">その他</label>
+                <li id="gender-other-list" class="gender-list">
+                  <input id="gender-other" type="radio" name="gender" />
+                  <label for="gender-other">その他</label>
                 </li>
               </ul>
             </li>
           </ul>
           <ul class="form">
-            <li id="email_list" class="form-list width-50">
+            <li id="email-list" class="form-list width-50">
               <h2 class="require-tag">
                 <label for="e-mail">メールアドレス</label>
               </h2>
               <input id="email" class="value" type="email" name="email" />
             </li>
           </ul>
-          <ul id="password_lists" class="form">
-            <li id="password_list" class="form-list width-50">
+          <ul id="password-lists" class="form">
+            <li id="password-list" class="form-list width-50">
               <h2 class="require-tag">
                 <label for="password">パスワード</label>
               </h2>
@@ -119,15 +119,15 @@
                 name="password"
               />
             </li>
-            <li id="password_confirm_list" class="form-list width-50">
+            <li id="password-confirm-list" class="form-list width-50">
               <h2 class="require-tag">
                 <label for="password-confirm">パスワード確認</label>
               </h2>
               <input
-                id="password_confirm"
+                id="password-confirm"
                 class="value"
                 type="password"
-                name="password_confirm"
+                name="password-confirm"
               />
             </li>
           </ul>
