@@ -99,7 +99,7 @@ password.addEventListener("change", validationPassword);
 passwordConfirm.addEventListener("change", validationPassword);
 
 // 「送信」ボタンの要素を取得
-const submit = document.querySelector(".submit-button");
+const submit = document.getElementById("submit");
 submit.addEventListener("click", (e) => {
   // 最初のイベントをキャンセル
   e.preventDefault();
@@ -145,4 +145,37 @@ submit.addEventListener("click", (e) => {
   if (isValidation) {
     return;
   }
+});
+
+// 生年月日
+// yearは1950年〜現在まで
+const newDate = new Date();
+const currentYear = newDate.getFullYear();
+
+function createOptionForElements(elem, num) {
+  let option = document.createElement("option");
+  option.text = num;
+  option.value = num;
+  elem.appendChild(option);
+}
+
+const birthYearOption = () => {
+  for (let i = 1920; i <= currentYear; i++) {
+    createOptionForElements(birthYear, i);
+  }
+  for (let i = 1; i <= 12; i++) {
+    createOptionForElements(birthMonth, i);
+  }
+  for (let i = 1; i <= 31; i++) {
+    createOptionForElements(birthDay, i);
+  }
+};
+
+// 参考：https://zenn.dev/okoe/articles/7876b897c0fccf
+birthYear.addEventListener("change", (e) => {
+  // 最初のイベントをキャンセル
+  e.preventDefault();
+
+  birthDay.innerHTML = "";
+  let lastDayOfMonth = new Date(birthDay.value);
 });
