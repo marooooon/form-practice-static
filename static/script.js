@@ -148,34 +148,44 @@ submit.addEventListener("click", (e) => {
 });
 
 // 生年月日
-// yearは1950年〜現在まで
 const newDate = new Date();
 const currentYear = newDate.getFullYear();
 
-function createOptionForElements(elem, num) {
+// 生年月日の初期値を設定
+for (let i = 1900; i <= currentYear; i++) {
+  createOptionForElements(birthYear, i, "年");
+}
+for (let i = 1; i <= 12; i++) {
+  createOptionForElements(birthMonth, i, "月");
+}
+for (let i = 1; i <= 31; i++) {
+  createOptionForElements(birthDay, i, "日");
+}
+
+function createOptionForElements(elem, num, text) {
   let option = document.createElement("option");
-  option.text = num;
+  option.text = num + text;
   option.value = num;
   elem.appendChild(option);
 }
 
-const birthYearOption = () => {
-  for (let i = 1920; i <= currentYear; i++) {
-    createOptionForElements(birthYear, i);
-  }
-  for (let i = 1; i <= 12; i++) {
-    createOptionForElements(birthMonth, i);
-  }
-  for (let i = 1; i <= 31; i++) {
-    createOptionForElements(birthDay, i);
-  }
-};
-
-// 参考：https://zenn.dev/okoe/articles/7876b897c0fccf
-birthYear.addEventListener("change", (e) => {
-  // 最初のイベントをキャンセル
-  e.preventDefault();
-
+function changeBirth() {
   birthDay.innerHTML = "";
-  let lastDayOfMonth = new Date(birthDay.value);
+  const lastDayOfMonth = new Date(
+    birthYear.value,
+    birthMonth.value,
+    0
+  ).getDate();
+
+  for (let i = 1; i <= lastDayOfMonth; i++) {
+    createOptionForElements(birthDay, i, "日");
+  }
+}
+
+birthYear.addEventListener("change", () => {
+  changeBirth();
+});
+
+birthMonth.addEventListener("change", () => {
+  changeBirth();
 });
