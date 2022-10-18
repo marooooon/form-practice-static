@@ -145,6 +145,8 @@ submit.addEventListener("click", (e) => {
   if (isValidation) {
     return;
   }
+
+  alert("あなたは適切にフォーム入力ができました。");
 });
 
 // 生年月日
