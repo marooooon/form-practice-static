@@ -73,6 +73,7 @@ function validationFurigana() {
 
 // メールアドレスバリデーション
 function validationEmail() {
+  console.log("email");
   removeErrorElement("error-email");
   if (!email.value.match(validEmail)) {
     createErrorElement(errorMessageEmail, "error-email", emailList);
@@ -83,6 +84,7 @@ function validationEmail() {
 // パスワードバリデーション
 function validationPassword() {
   removeErrorElement("error-password");
+  removeErrorElement("error-password-confirm");
   if (!password.value || !passwordConfirm.value) {
     return;
   } else if (password.value !== passwordConfirm.value) {
